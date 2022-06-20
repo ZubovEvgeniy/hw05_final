@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Post, Group, User, Comment, Follow
+from .models import Post, Group, User, Follow
 from .forms import PostForm, CommentForm
 from posts.helper import paginator
 
@@ -43,8 +43,8 @@ def profile(request, username):
 
 def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
-    form = CommentForm(request.POST or None)
-    comment = Comment.objects.select_related('post').filter(post_id=post_id)
+    form = CommentForm(None)
+    comment = post.comments.filter(post_id=post_id)
     context = {
         'post': post,
         'form': form,
@@ -120,11 +120,10 @@ def profile_follow(request, username):
             'posts:profile',
             username=username,
         )
-    follower = Follow.objects.filter(
+    if Follow.objects.filter(
         user=request.user,
         author=author
-    ).exists()
-    if follower is True:
+    ).exists():
         return redirect(
             'posts:profile',
             username=username,

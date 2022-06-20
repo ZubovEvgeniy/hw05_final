@@ -34,24 +34,23 @@
                   <span class="required text-danger">*</span>
                 {% endif %}
             </label>
-              {{ field|addclass:'form-control' }} 
-              {% if field.help_text %}
-                <small 
-                   id="{{ field.id_for_label }}-help"
-                   class="form-text text-muted"
-                >
-                  {{ field.help_text|safe }}
-                </small>
-              {% endif %}
+            {{ field|addclass:'form-control' }} 
+            {% if field.help_text %}
+              <small 
+                id="{{ field.id_for_label }}-help"
+                class="form-text text-muted">
+                {{ field.help_text|safe }}
+              </small>
+            {% endif %}
           </div>
           {% endfor %}
-            <button type="submit" class="btn btn-primary">
-              {% if is_edit %}
+          <button type="submit" class="btn btn-primary">
+            {% if is_edit %}
               Сохранить
-              {% else %}
+            {% else %}
               Добавить
-              {% endif %}
-            </button>
+            {% endif %}
+          </button>
         </div>
       </div>
     </div>

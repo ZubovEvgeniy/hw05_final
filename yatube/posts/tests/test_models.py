@@ -37,7 +37,7 @@ class PostModelTest(TestCase):
         """verbose_name в полях совпадает с ожидаемым."""
         post = self.post
         field_verboses = {
-            'text': 'Текст поста',
+            'text': 'Текст записи',
             'author': 'Автор',
             'group': 'Группа',
         }

@@ -89,7 +89,7 @@ class PostPegesTest(TestCase):
         post_image_0 = first_object.image
         self.assertEqual(post_text_0, self.post.text)
         self.assertEqual(pub_date_0, self.post.pub_date)
-        self.assertEqual(post_title_0, 'Test group')
+        self.assertEqual(post_title_0, self.group.title)
         self.assertEqual(post_author_0, self.post.author)
         self.assertTrue(post_image_0, self.post.image)
 

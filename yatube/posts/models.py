@@ -16,14 +16,14 @@ class Group(models.Model):
 class Post(models.Model):
     # Тип: TextField
     text = models.TextField(
-        'Текст поста',
-        help_text='Введите текст поста'
+        verbose_name='Текст записи',
+        help_text='Введите текст записи'
     )
     # Тип поля: DateTimeField, для хранения даты и времени;
     # параметр auto_now_add определяет, что в поле будет автоматически
     # подставлено время и дата создания новой записи
     pub_date = models.DateTimeField(
-        'Дата создания',
+        verbose_name='Дата создания',
         auto_now_add=True
     )
     # Тип: ForeignKey, ссылка на модель User
@@ -40,12 +40,13 @@ class Post(models.Model):
         on_delete=models.SET_NULL,
         related_name='posts',
         verbose_name='Группа',
-        help_text='Группа, к которой будет относиться пост',
+        help_text='Группа, к которой будет относиться запись',
     )
     image = models.ImageField(
-        'Картинка',
+        verbose_name='Изображение',
+        help_text='Загрузите изображение',
         upload_to='posts/',
-        blank=True
+        blank=True,
     )
 
     def __str__(self):
@@ -93,3 +94,9 @@ class Follow(models.Model):
         on_delete=models.CASCADE,
         related_name='following',
     )
+
+    class Meta:
+        unique_together = (
+            'user',
+            'author',
+        )
