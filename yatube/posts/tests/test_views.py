@@ -2,11 +2,9 @@ from django.contrib.auth import get_user_model
 from django.test import Client, TestCase
 from django.urls import reverse
 from django.core.cache import cache
-
 from django import forms
 import datetime as dt
 from django.core.files.uploadedfile import SimpleUploadedFile
-
 from posts.models import Post, Group, Comment, Follow
 
 User = get_user_model()
@@ -57,6 +55,7 @@ class PostPegesTest(TestCase):
         # Создаем авторизованный клиент
         self.authorized_client = Client()
         self.authorized_client.force_login(self.user)
+        cache.clear()
 
     # Проверяем используемые шаблоны
     def test_pages_uses_correct_template(self):
@@ -180,6 +179,7 @@ class PaginatorViewsTest(TestCase):
         # Создаем авторизованный клиент
         self.authorized_client = Client()
         self.authorized_client.force_login(self.user)
+        cache.clear()
 
     def test_first_pages_contains_ten_records(self):
         # Проверка: количество постов на первой странице равно 10.

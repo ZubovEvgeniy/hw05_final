@@ -3,8 +3,10 @@ from django.contrib.auth.decorators import login_required
 from .models import Post, Group, User, Follow
 from .forms import PostForm, CommentForm
 from posts.helper import paginator
+from django.views.decorators.cache import cache_page
 
 
+@cache_page(20)
 def index(request):
     post_list = Post.objects.all()
     # В словаре context отправляем информацию в шаблон
