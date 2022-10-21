@@ -1,3 +1,77 @@
-# hw05_final
+# Проект «Yatube»
 
-[![CI](https://github.com/yandex-praktikum/hw05_final/actions/workflows/python-app.yml/badge.svg?branch=master)](https://github.com/yandex-praktikum/hw05_final/actions/workflows/python-app.yml)
+## Описание проекта
+
+Проект Yatube - это социальная сеть для публикации личных дневников.
+
+Проект позволяет:
+
+* регистрироваться и авторизовываться;
+* восстанавливать пароль по электронной почте;
+* создавать личную страницу для публикации записей;
+* создавать и редактировать свои записи;
+* просматривать страницы других авторов;
+* комментировать записи других авторов;
+* подписываться на авторов;
+* группировать записи можно отправлять в определённую группу.
+
+Модерация записей, работа с пользователями, создание групп - осуществляется через встроенную панель администратора
+
+В проекте реализовано автоматическое тестирование с помощью библиотеки `Unittest`, настроено кэширование.
+
+## Используемые технологии
+
+* Django 2.2
+* Python 3
+* Django HTML Templates
+* Django Unittest
+* SQLite
+
+## Установка проекта
+
+Клонируйте данный репозиторий на свой компьютер и перейдите в папку проекта.
+
+```
+git clone git@github.com:ZubovEvgeniy/hw05_final.git
+cd hw05_final
+```
+
+Создайте и активируйте виртуальное окружение:
+
+```
+python -m venv venv
+source ./venv/Scripts/activate  #для Windows
+source ./venv/bin/activate      #для Linux и macOS
+```
+
+Установите требуемые зависимости:
+
+```
+pip install -r requirements.txt
+```
+
+Примените миграции:
+
+```
+python manage.py migrate
+```
+
+Загрузите архив с необходимой статикой и распакуйте его в папку `posts/static`
+
+<https://code.s3.yandex.net/backend-developer/learning-materials/static.zip>
+
+Запустите django-сервер:
+
+```
+python manage.py runserver
+```
+
+Приложение будет доступно по адресу: <http://127.0.0.1:8000/>
+
+## Работа с проектом
+
+### Создание суперпользователя
+
+```
+python manage.py createsuperuser
+```
